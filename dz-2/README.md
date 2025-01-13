@@ -24,7 +24,7 @@
   - *address* - Адрес клиента
   - *driver_license_number* - Номер водительского удостоверения клиента
   - *customer_type_id* - Идентификатор типа клиента (ссылка на таблицу customer_type)
-
+    
 - Таблица *employees* - Сотрудник
   - *id* - Уникальный идентификатор сотрудника
   - *surname* - Фамилия сотрудника
@@ -33,7 +33,7 @@
   - *position* - Должность сотрудника
   - *phone_number* - Телефон сотрудника
   - *email* - Электронная почта сотрудника
-
+    
 - Таблица *model* - Модель транспортного средства
   - *id* - Уникальный идентификатор модели
   - *transport_type_id* - Идентификатор типа ТС (ссылка на таблицу transport_type)
@@ -109,31 +109,26 @@
  CREATE INDEX idx_customer_customer_type_id ON customer (customer_type_id);
 ```
 - индекс поиска клиентов по типу (для определения и выборки типов клиентов к средней стоимости аренды), простой;
-  
 ##### Таблица *employees* #####
 ```sql
  CREATE INDEX idx_employees_id ON employees (id);
 ```
 - индекс поиска сотрудника по идентификатору (для понимания какой объем бронирований числятся за конкретным сотрудником), простой;
-  
 ##### Таблица *model* #####
 ```sql
 CREATE INDEX idx_model_transport_type_id ON model (transport_type_id);
 ```
 - индекс поиска модели ТС по её типу (необходимо для отчетного среза о популярности разных типов ТС), простой;
-  
 ##### Таблица *vehicle* #####
 ```sql
 CREATE INDEX idx_vehicle_state ON vehicle (state);
 ```
 - индекс по статусу доступности (для ускорения поиска свободных ТС в установленную дату), простой;
-  
 ##### Таблица *reservation_status* #####
 ```sql
 CREATE INDEX idx_reservation_status_name ON reservation_status (name);
 ```
 - индекс по статусу бронирования (для ускорения формирования различных отчетностей), простой;
-  
 ##### Таблица *reservation* #####
 ```sql
  CREATE INDEX idx_reservation_dates ON reservation (start_date, finish_date);
@@ -141,13 +136,11 @@ CREATE INDEX idx_reservation_status_name ON reservation_status (name);
 ```
 - индекс поиска бронирования на определенную дату (необходимо для запроса № 1), композитный;
 - индекс поиска по статусу бронирования (необязателен, но ускорит выборку по запросам, например в рамках запроса № 1), простой;
-
 ##### Таблица *contract* #####
 ```sql
 CREATE INDEX idx_contract_date ON contract (date);
 ```
 - индекс по дате договора (ускоряет поиск конкретного договора(ов) за определенный период), простой;
-
 ##### Таблица *reservation_request* #####
 ```sql
 CREATE INDEX idx_reservation_request_reservation_id ON reservation_request (reservation_id);
@@ -155,13 +148,11 @@ CREATE INDEX idx_reservation_request_vehicle_id ON reservation_request (vehicle_
 ```
 - индекс по идентификатору бронирования (для поиска заявок на бронирование), простой;
 - индекс по идентификатору ТС (для поиска заявок на бронирование по конкретному ТС), простой;
-
 ##### Таблица *transport_type* #####
 ```sql
 CREATE INDEX idx_transport_type_name ON transport_type (name);
 ```
 - индекс по названию типа ТС (для поиска по типам ТС и выборке типа по наименованию), простой;
-
 ##### Таблица *customer_type* #####
 ```sql
 CREATE INDEX idx_customer_type_name ON customer_type (name);
