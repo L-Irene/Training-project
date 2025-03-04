@@ -25,7 +25,7 @@ CREATE TABLE current.vehicle (
 CREATE INDEX idx_vehicle_model_id ON current.vehicle (model_id);    
 CREATE INDEX idx_vehicle_status_id ON current.vehicle (status_id);
 ```
-- Прислать текстом результат команды explain, в которой используется данный индекс.
+- Прислать текстом результат команды explain, в которой используется данный индекс.     
   Задали поиск по таблице с помощью индекса, где идентификатор модели = 3.
 ```sql
 EXPLAIN SELECT * FROM current.vehicle WHERE model_id = 3;
