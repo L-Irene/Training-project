@@ -44,6 +44,7 @@ CREATE TABLE products IF NOT EXISTS (
 
 ### 1. Типы данных ###
 1.1. В таблице "products" логически некорректно указан тип данных "VARCHAR(32)" для поля "category_id". Тип данных должен быть числовым.
+
 В таблице "categories" поле "category_id" имеет тип "BIGINT UNSIGNED", поэтому "category_id" в таблице "products" также необходимо скорректировать на "BIGINT UNSIGNED".
 ```sql
 category_id BIGINT UNSIGNED NOT NULL
