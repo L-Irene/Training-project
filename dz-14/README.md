@@ -62,8 +62,8 @@ ALTER TABLE customer ADD COLUMN description TEXT;
 ```sql
 UPDATE customer SET description = 'Опытный водитель с большим безаварийным стажем' WHERE id = 1;
 UPDATE customer SET description = 'Новичок, метрики стиля вождения - спокойный, аккуратный, аварий по документам не зафиксировано' WHERE id = 2;
-UPDATE customer SET description = 'Имеет профессиональный опыт работы с автотранспортом и спецтехникой' WHERE id = 4;
-UPDATE customer SET description = 'Внимательный и аккуратный' WHERE id = 5;
+UPDATE customer SET description = 'Имеет профессиональный опыт работы с автотранспортом и спецтехникой' WHERE id = 3;
+UPDATE customer SET description = 'Внимательный и аккуратный' WHERE id = 4;
 ```
 3. Полнотекстовый индекс на соответствующее добавленное поле.
 ```sql
